@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotspot-Face Shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="W4ZV2H284VKAU"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,6 +18,7 @@
       --muted: #7a8099;
       --accent: #3b82f6;
       --accent2: #f97316;
+      --green: #22c55e;
     }
 
     body {
@@ -54,7 +56,7 @@
     }
     .brand-text p { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
 
-    .header-nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    .header-nav { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
     .nav-btn {
       padding: 8px 18px;
@@ -71,6 +73,9 @@
     .nav-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .nav-solid { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
     .nav-solid:hover { background: #2563eb; }
+
+    /* View Cart wrapper in header */
+    .header-cart paypal-cart-button { display: inline-block; }
 
     .shop-hero {
       text-align: center;
@@ -104,7 +109,15 @@
       padding: 2rem 1.5rem 4rem;
     }
 
-    .postage-wrap { text-align: center; margin-bottom: 2rem; }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
     .postage-note {
       color: var(--muted);
       font-size: 0.85rem;
@@ -192,7 +205,6 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 2px;
       width: fit-content;
     }
     .badge-orange { background: rgba(249,115,22,0.15); color: var(--accent2); border: 1px solid rgba(249,115,22,0.3); }
@@ -206,6 +218,7 @@
       margin-top: 4px;
       padding-top: 10px;
       border-top: 1px solid var(--border);
+      gap: 10px;
     }
 
     .card-price {
@@ -213,24 +226,14 @@
       font-size: 1.5rem;
       font-weight: 800;
       color: var(--accent2);
+      white-space: nowrap;
     }
     .card-price-none { color: var(--muted); font-size: 1.2rem; }
 
-    .buy-btn {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.88rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      cursor: pointer;
+    /* PayPal button overrides to fit card */
+    paypal-add-to-cart-button {
+      display: block;
     }
-    .buy-btn-active { background: var(--accent); color: #fff; }
-    .buy-btn-active:hover { background: #2563eb; transform: scale(1.04); }
-    .buy-btn-inactive { background: #252b3b; color: var(--muted); cursor: default; }
 
     footer {
       background: #080a0e;
@@ -267,7 +270,9 @@
       <nav class="header-nav">
         <a href="https://hotspotface.github.io" class="nav-btn nav-ghost">← Home</a>
         <a href="https://hotspotface.github.io/hotspot-face-manual/" class="nav-btn nav-ghost">User Guide</a>
-        <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="nav-btn nav-solid">Contact Us</a>
+        <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" class="nav-btn nav-solid">Contact Us</a>
+        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+        <script>cartPaypal.Cart({ id: "pp-view-cart" })</script>
       </nav>
     </div>
   </header>
@@ -279,7 +284,7 @@
 
   <div class="shop-wrap">
 
-    <div class="postage-wrap">
+    <div class="top-bar">
       <div class="postage-note">📦 UK mainland postage £6 &nbsp;·&nbsp; Worldwide shipping available — contact us for a quote</div>
     </div>
 
@@ -287,59 +292,60 @@
 
       <!-- 1: Hotspot-Face Complete Package -->
       <div class="card">
-        <div class="card-img-placeholder">
-          📦
-          <span>Photo coming soon</span>
-        </div>
+        <div class="card-img-placeholder">📦<span>Photo coming soon</span></div>
         <div class="card-body">
           <div class="badge badge-orange">⭐ Featured</div>
           <div class="card-title">Hotspot-Face Complete Package</div>
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£69.99</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Order: Hotspot-Face Complete Package" class="buy-btn buy-btn-active">Buy Now</a>
+            <paypal-add-to-cart-button data-id="7BNS2JZ78FP9E"></paypal-add-to-cart-button>
+            <script>cartPaypal.AddToCart({ id: "7BNS2JZ78FP9E" })</script>
           </div>
         </div>
       </div>
 
-      <!-- 2: Bungee USB Cable -->
+      <!-- 2: Pig Tail USB Cable -->
       <div class="card">
-        <img class="card-img" src="cable.jpg" alt="Bungee Style USB Lead">
+        <img class="card-img" src="cable.jpg" alt="Hotspot-Face Pig Tail USB Cable">
         <div class="card-body">
           <div class="badge badge-blue">Accessory</div>
-          <div class="card-title">Bungee Style USB Lead</div>
+          <div class="card-title">Hotspot-Face Pig Tail USB Cable 1.5Mtr</div>
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£10.00</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Order: Bungee Style USB Lead" class="buy-btn buy-btn-active">Buy Now</a>
+            <paypal-add-to-cart-button data-id="EBYQ8R3QJY5GG"></paypal-add-to-cart-button>
+            <script>cartPaypal.AddToCart({ id: "EBYQ8R3QJY5GG" })</script>
           </div>
         </div>
       </div>
 
-      <!-- 3: Placeholder -->
+      <!-- 3: Vehicle Magnetic Vent Mount -->
       <div class="card">
-        <div class="card-img-placeholder">🔧<span>Coming Soon</span></div>
+        <img class="card-img" src="mount.jpg" alt="Vehicle Magnetic Vent Mount">
         <div class="card-body">
-          <div class="badge badge-grey">Coming Soon</div>
-          <div class="card-title">Coming Soon</div>
-          <div class="card-desc">New product coming soon — check back later.</div>
+          <div class="badge badge-blue">Accessory</div>
+          <div class="card-title">Vehicle Magnetic Vent Mount</div>
+          <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
-            <div class="card-price card-price-none">—</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="buy-btn buy-btn-inactive">Enquire</a>
+            <div class="card-price">£9.50</div>
+            <paypal-add-to-cart-button data-id="53AV7ZZ727WFE"></paypal-add-to-cart-button>
+            <script>cartPaypal.AddToCart({ id: "53AV7ZZ727WFE" })</script>
           </div>
         </div>
       </div>
 
-      <!-- 4: Placeholder -->
+      <!-- 4: Replacement Base Station Dock -->
       <div class="card">
-        <div class="card-img-placeholder">🔧<span>Coming Soon</span></div>
+        <img class="card-img" src="deskmount.jpg" alt="Hotspot-Face Replacement Base Station Dock">
         <div class="card-body">
-          <div class="badge badge-grey">Coming Soon</div>
-          <div class="card-title">Coming Soon</div>
-          <div class="card-desc">New product coming soon — check back later.</div>
+          <div class="badge badge-blue">Accessory</div>
+          <div class="card-title">Hotspot-Face Replacement Base Station Dock</div>
+          <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
-            <div class="card-price card-price-none">—</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="buy-btn buy-btn-inactive">Enquire</a>
+            <div class="card-price">£8.00</div>
+            <paypal-add-to-cart-button data-id="WD5TX5JBTSC84"></paypal-add-to-cart-button>
+            <script>cartPaypal.AddToCart({ id: "WD5TX5JBTSC84" })</script>
           </div>
         </div>
       </div>
@@ -353,7 +359,7 @@
           <div class="card-desc">New product coming soon — check back later.</div>
           <div class="card-footer">
             <div class="card-price card-price-none">—</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="buy-btn buy-btn-inactive">Enquire</a>
+            <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" style="background:#252b3b;color:var(--muted);padding:8px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;">Enquire</a>
           </div>
         </div>
       </div>
@@ -367,7 +373,7 @@
           <div class="card-desc">New product coming soon — check back later.</div>
           <div class="card-footer">
             <div class="card-price card-price-none">—</div>
-            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="buy-btn buy-btn-inactive">Enquire</a>
+            <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" style="background:#252b3b;color:var(--muted);padding:8px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;">Enquire</a>
           </div>
         </div>
       </div>
@@ -380,7 +386,7 @@
     <p style="margin-top:6px;">
       <a href="https://hotspotface.github.io">Home</a> &nbsp;|&nbsp;
       <a href="https://hotspotface.github.io/hotspot-face-manual/">User Manual</a> &nbsp;|&nbsp;
-      <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Support">Contact Us</a>
+      <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Support">Contact Us</a>
     </p>
   </footer>
 
