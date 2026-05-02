@@ -5,255 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotspot-Face Shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="W4ZV2H284VKAU"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #0d0f14;
-      --surface: #161920;
-      --surface2: #1e2130;
-      --border: #2a2f42;
-      --text: #e8eaf0;
-      --muted: #7a8099;
-      --accent: #3b82f6;
-      --accent2: #f97316;
-      --green: #22c55e;
+      --bg: #0d0f14; --surface: #161920; --surface2: #1e2130;
+      --border: #2a2f42; --text: #e8eaf0; --muted: #7a8099;
+      --accent: #3b82f6; --accent2: #f97316; --green: #22c55e;
     }
-
-    body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(135deg, #0f1729 0%, #1a0a2e 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 1.2rem 2rem;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: linear-gradient(135deg, #0f1729 0%, #1a0a2e 100%); border-bottom: 1px solid var(--border); padding: 1.2rem 2rem; }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 14px; }
     .brand img { height: 52px; width: auto; }
-    .brand-text h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: #fff;
-      line-height: 1;
-    }
+    .brand-text h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.7rem; font-weight: 800; letter-spacing: 0.04em; color: #fff; line-height: 1; }
     .brand-text p { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
-
     .header-nav { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-
-    .nav-btn {
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.88rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: all 0.2s;
-      display: inline-block;
-    }
+    .nav-btn { padding: 8px 18px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; text-decoration: none; transition: all 0.2s; display: inline-block; }
     .nav-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
     .nav-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .nav-solid { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
     .nav-solid:hover { background: #2563eb; }
-
-    /* View Cart wrapper in header */
-    .header-cart paypal-cart-button { display: inline-block; }
-
-    .shop-hero {
-      text-align: center;
-      padding: 3rem 1rem 2.5rem;
-      background: linear-gradient(180deg, #0f1729 0%, var(--bg) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .shop-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .shop-hero h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      position: relative;
-    }
+    .shop-hero { text-align: center; padding: 3rem 1rem 2.5rem; background: linear-gradient(180deg, #0f1729 0%, var(--bg) 100%); position: relative; overflow: hidden; }
+    .shop-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 65%); pointer-events: none; }
+    .shop-hero h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; position: relative; }
     .shop-hero h2 span { color: var(--accent); }
     .shop-hero p { color: var(--muted); font-size: 1rem; margin-top: 0.5rem; position: relative; }
-
-    .shop-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
-
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 2rem;
-    }
-
-    .postage-note {
-      color: var(--muted);
-      font-size: 0.85rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 20px;
-      display: inline-block;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-      border-color: var(--accent);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      background: var(--surface2);
-    }
-
-    .card-img-placeholder {
-      width: 100%;
-      height: 220px;
-      background: var(--surface2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 2.5rem;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-    .card-img-placeholder span {
-      font-size: 0.75rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .card-body {
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      gap: 10px;
-    }
-
-    .card-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: #fff;
-      line-height: 1.2;
-    }
-
+    .shop-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .top-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 2rem; }
+    .postage-note { color: var(--muted); font-size: 0.85rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 20px; display: inline-block; }
+    .view-cart-btn { display: inline-block; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-decoration: none; border: none; cursor: pointer; }
+    .view-cart-btn:hover { background: #2563eb; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); border-color: var(--accent); }
+    .card-img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--surface2); }
+    .card-img-placeholder { width: 100%; height: 220px; background: var(--surface2); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-size: 2.5rem; gap: 8px; border-bottom: 1px solid var(--border); }
+    .card-img-placeholder span { font-size: 0.75rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+    .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.03em; color: #fff; line-height: 1.2; }
     .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; flex: 1; }
-
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      width: fit-content;
-    }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; width: fit-content; }
     .badge-orange { background: rgba(249,115,22,0.15); color: var(--accent2); border: 1px solid rgba(249,115,22,0.3); }
-    .badge-blue   { background: rgba(59,130,246,0.15);  color: var(--accent);  border: 1px solid rgba(59,130,246,0.3); }
-    .badge-grey   { background: rgba(120,130,155,0.15); color: var(--muted);   border: 1px solid rgba(120,130,155,0.2); }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 4px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      gap: 10px;
-    }
-
-    .card-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent2);
-      white-space: nowrap;
-    }
+    .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+    .badge-grey { background: rgba(120,130,155,0.15); color: var(--muted); border: 1px solid rgba(120,130,155,0.2); }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--border); gap: 10px; }
+    .card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--accent2); white-space: nowrap; }
     .card-price-none { color: var(--muted); font-size: 1.2rem; }
-
-    /* PayPal button overrides to fit card */
-    paypal-add-to-cart-button {
-      display: block;
-    }
-
-    footer {
-      background: #080a0e;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 1.8rem;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
+    .pp-btn input[type="submit"] { background: var(--accent); color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .pp-btn input[type="submit"]:hover { background: #2563eb; }
+    .pp-btn img { display: none; }
+    .enquire-btn { background: #252b3b; color: var(--muted); padding: 9px 18px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); text-align: center; padding: 1.8rem; color: var(--muted); font-size: 0.82rem; }
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { color: #93c5fd; }
-
-    @media (max-width: 600px) {
-      .shop-hero h2 { font-size: 2.2rem; }
-      .grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .card-img, .card-img-placeholder { height: 160px; }
-    }
-    @media (max-width: 420px) {
-      .grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .shop-hero h2 { font-size: 2.2rem; } .grid { grid-template-columns: 1fr 1fr; gap: 1rem; } .card-img, .card-img-placeholder { height: 160px; } }
+    @media (max-width: 420px) { .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -270,9 +76,13 @@
       <nav class="header-nav">
         <a href="https://hotspotface.github.io" class="nav-btn nav-ghost">← Home</a>
         <a href="https://hotspotface.github.io/hotspot-face-manual/" class="nav-btn nav-ghost">User Guide</a>
-        <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" class="nav-btn nav-solid">Contact Us</a>
-        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-        <script>cartPaypal.Cart({ id: "pp-view-cart" })</script>
+        <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="nav-btn nav-solid">Contact Us</a>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:inline;">
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="display" value="1">
+          <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
+          <input type="submit" value="🛒 View Cart" class="view-cart-btn" style="cursor:pointer;border:none;">
+        </form>
       </nav>
     </div>
   </header>
@@ -283,7 +93,6 @@
   </div>
 
   <div class="shop-wrap">
-
     <div class="top-bar">
       <div class="postage-note">📦 UK mainland postage £6 &nbsp;·&nbsp; Worldwide shipping available — contact us for a quote</div>
     </div>
@@ -299,8 +108,15 @@
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£69.99</div>
-            <paypal-add-to-cart-button data-id="7BNS2JZ78FP9E"></paypal-add-to-cart-button>
-            <script>cartPaypal.AddToCart({ id: "7BNS2JZ78FP9E" })</script>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="pp-btn">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
+              <input type="hidden" name="item_name" value="Hotspot-Face Complete Package">
+              <input type="hidden" name="amount" value="69.99">
+              <input type="hidden" name="currency_code" value="GBP">
+              <input type="submit" value="Add to Cart">
+            </form>
           </div>
         </div>
       </div>
@@ -314,8 +130,15 @@
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£10.00</div>
-            <paypal-add-to-cart-button data-id="EBYQ8R3QJY5GG"></paypal-add-to-cart-button>
-            <script>cartPaypal.AddToCart({ id: "EBYQ8R3QJY5GG" })</script>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="pp-btn">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
+              <input type="hidden" name="item_name" value="Hotspot-Face Pig Tail USB Cable 1.5Mtr">
+              <input type="hidden" name="amount" value="10.00">
+              <input type="hidden" name="currency_code" value="GBP">
+              <input type="submit" value="Add to Cart">
+            </form>
           </div>
         </div>
       </div>
@@ -329,8 +152,15 @@
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£9.50</div>
-            <paypal-add-to-cart-button data-id="53AV7ZZ727WFE"></paypal-add-to-cart-button>
-            <script>cartPaypal.AddToCart({ id: "53AV7ZZ727WFE" })</script>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="pp-btn">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
+              <input type="hidden" name="item_name" value="Vehicle Magnetic Vent Mount">
+              <input type="hidden" name="amount" value="9.50">
+              <input type="hidden" name="currency_code" value="GBP">
+              <input type="submit" value="Add to Cart">
+            </form>
           </div>
         </div>
       </div>
@@ -344,8 +174,15 @@
           <div class="card-desc">Description coming soon.</div>
           <div class="card-footer">
             <div class="card-price">£8.00</div>
-            <paypal-add-to-cart-button data-id="WD5TX5JBTSC84"></paypal-add-to-cart-button>
-            <script>cartPaypal.AddToCart({ id: "WD5TX5JBTSC84" })</script>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="pp-btn">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
+              <input type="hidden" name="item_name" value="Hotspot-Face Replacement Base Station Dock">
+              <input type="hidden" name="amount" value="8.00">
+              <input type="hidden" name="currency_code" value="GBP">
+              <input type="submit" value="Add to Cart">
+            </form>
           </div>
         </div>
       </div>
@@ -359,7 +196,7 @@
           <div class="card-desc">New product coming soon — check back later.</div>
           <div class="card-footer">
             <div class="card-price card-price-none">—</div>
-            <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" style="background:#252b3b;color:var(--muted);padding:8px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;">Enquire</a>
+            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="enquire-btn">Enquire</a>
           </div>
         </div>
       </div>
@@ -373,7 +210,7 @@
           <div class="card-desc">New product coming soon — check back later.</div>
           <div class="card-footer">
             <div class="card-price card-price-none">—</div>
-            <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Shop Enquiry" style="background:#252b3b;color:var(--muted);padding:8px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;">Enquire</a>
+            <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Shop Enquiry" class="enquire-btn">Enquire</a>
           </div>
         </div>
       </div>
@@ -386,7 +223,7 @@
     <p style="margin-top:6px;">
       <a href="https://hotspotface.github.io">Home</a> &nbsp;|&nbsp;
       <a href="https://hotspotface.github.io/hotspot-face-manual/">User Manual</a> &nbsp;|&nbsp;
-      <a href="mailto:roberteddy1234@gmail.com?subject=Hotspot-Face Support">Contact Us</a>
+      <a href="mailto:hotspotfacem3ure@gmail.com?subject=Hotspot-Face Support">Contact Us</a>
     </p>
   </footer>
 
