@@ -10,7 +10,7 @@
     :root {
       --bg: #0d0f14; --surface: #161920; --surface2: #1e2130;
       --border: #2a2f42; --text: #e8eaf0; --muted: #7a8099;
-      --accent: #3b82f6; --accent2: #f97316; --green: #22c55e;
+      --accent: #3b82f6; --accent2: #f97316; --green: #22c55e; --red: #ef4444;
     }
     body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
     header { background: linear-gradient(135deg, #0f1729 0%, #1a0a2e 100%); border-bottom: 1px solid var(--border); padding: 1.2rem 2rem; }
@@ -25,6 +25,10 @@
     .nav-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .nav-solid { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
     .nav-solid:hover { background: #2563eb; }
+
+    .sale-banner { background: linear-gradient(90deg, #f97316, #ef4444); text-align: center; padding: 10px 1rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.95rem; color: #fff; }
+    .sale-banner span { text-transform: none; font-weight: 500; font-size: 0.85rem; opacity: 0.95; letter-spacing: normal; }
+
     .shop-hero { text-align: center; padding: 3rem 1rem 2.5rem; background: linear-gradient(180deg, #0f1729 0%, var(--bg) 100%); position: relative; overflow: hidden; }
     .shop-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 65%); pointer-events: none; }
     .shop-hero h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; position: relative; }
@@ -36,8 +40,11 @@
     .view-cart-btn { display: inline-block; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-decoration: none; border: none; cursor: pointer; }
     .view-cart-btn:hover { background: #2563eb; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); border-color: var(--accent); }
+    .card-sale { border-color: var(--accent2); }
+    .card-sale:hover { border-color: var(--accent2); box-shadow: 0 12px 32px rgba(249,115,22,0.25); }
+    .sale-ribbon { position: absolute; top: 14px; left: -34px; transform: rotate(-45deg); background: linear-gradient(90deg, #f97316, #ef4444); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); z-index: 2; }
     .card-img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--surface2); }
     .card-img-placeholder { width: 100%; height: 220px; background: var(--surface2); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-size: 2.5rem; gap: 8px; border-bottom: 1px solid var(--border); }
     .card-img-placeholder span { font-size: 0.75rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -48,11 +55,17 @@
     .badge-orange { background: rgba(249,115,22,0.15); color: var(--accent2); border: 1px solid rgba(249,115,22,0.3); }
     .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
     .badge-grey { background: rgba(120,130,155,0.15); color: var(--muted); border: 1px solid rgba(120,130,155,0.2); }
+    .badge-red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.35); }
     .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--border); gap: 10px; }
+    .price-wrap { display: flex; flex-direction: column; line-height: 1.1; }
     .card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--accent2); white-space: nowrap; }
+    .card-price-was { font-size: 0.85rem; color: var(--muted); text-decoration: line-through; white-space: nowrap; }
     .card-price-none { color: var(--muted); font-size: 1.2rem; }
+    .stock-note { font-size: 0.7rem; color: var(--red); font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; margin-top: 2px; }
     .pp-btn input[type="submit"] { background: var(--accent); color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
     .pp-btn input[type="submit"]:hover { background: #2563eb; }
+    .card-sale .pp-btn input[type="submit"] { background: var(--accent2); }
+    .card-sale .pp-btn input[type="submit"]:hover { background: #ea580c; }
     .pp-btn img { display: none; }
     .enquire-btn { background: #252b3b; color: var(--muted); padding: 9px 18px; border-radius: 6px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
     footer { background: #080a0e; border-top: 1px solid var(--border); text-align: center; padding: 1.8rem; color: var(--muted); font-size: 0.82rem; }
@@ -87,6 +100,10 @@
     </div>
   </header>
 
+  <div class="sale-banner">
+    ☀️ SUMMER SALE — Complete Package now £59.99 <span>· while stocks last</span>
+  </div>
+
   <div class="shop-hero">
     <h2>The <span>Hotspot-Face</span> Shop</h2>
     <p>Accessories and equipment for your DMR setup — by M3URE</p>
@@ -99,21 +116,26 @@
 
     <div class="grid">
 
-      <!-- 1: Hotspot-Face Complete Package -->
-      <div class="card">
+      <!-- 1: Hotspot-Face Complete Package (SUMMER SALE) -->
+      <div class="card card-sale">
+        <div class="sale-ribbon">Sale</div>
         <img class="card-img" src="complete.jpg" alt="Hotspot-Face Complete Package">
         <div class="card-body">
-          <div class="badge badge-orange">⭐ Featured</div>
+          <div class="badge badge-red">☀️ Summer Sale</div>
           <div class="card-title">Hotspot-Face Complete Package</div>
           <div class="card-desc">Complete package ready to go. Includes Hotspot-Face with remote fascia, Base Station Dock, Vehicle Magnetic Vent Mount, Standard USB Cable and Pre-Programmed SD Card.</div>
           <div class="card-footer">
-            <div class="card-price">£69.99</div>
+            <div class="price-wrap">
+              <div class="card-price-was">£69.99</div>
+              <div class="card-price">£59.99</div>
+              <div class="stock-note">While stocks last</div>
+            </div>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="pp-btn">
               <input type="hidden" name="cmd" value="_cart">
               <input type="hidden" name="add" value="1">
               <input type="hidden" name="business" value="hotspotfacem3ure@gmail.com">
-              <input type="hidden" name="item_name" value="Hotspot-Face Complete Package">
-              <input type="hidden" name="amount" value="69.99">
+              <input type="hidden" name="item_name" value="Hotspot-Face Complete Package (Summer Sale)">
+              <input type="hidden" name="amount" value="59.99">
               <input type="hidden" name="currency_code" value="GBP">
               <input type="submit" value="Add to Cart">
             </form>
