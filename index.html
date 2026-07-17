@@ -300,7 +300,8 @@
   <script>
     (function () {
       var PAYPAL_BUSINESS = 'hotspotfacem3ure@gmail.com';
-      var SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzwgF-f9giP7A_n49SLZUnkywYxbEwse_zUH3OIgAWMCyV6GnpgLhXJ5uZtaw-2nlG6qg/exec';
+      var SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx0kVtvw5upluCdv87xQF6MyeNyU6e-_gwSuPYH3Bg2BNxR3WTxv--aCjnNa0EEyBUW2g/exec';
+      var SHEET_WEBHOOK_SECRET = '14ecd507514ab9a3f349f669d9b9246e';
       var CART_KEY = 'hotspotface_cart';
       var DETAILS_KEY = 'hotspotface_details';
       var fieldIds = ['cust-fname', 'cust-lname', 'cust-address', 'cust-postcode', 'cust-phone'];
@@ -482,6 +483,7 @@
         var subtotal = cart.reduce(function (sum, line) { return sum + line.price * line.qty; }, 0);
 
         sendOrderToSheet({
+          secret: SHEET_WEBHOOK_SECRET,
           firstName: fname,
           lastName: lname,
           address: address,
