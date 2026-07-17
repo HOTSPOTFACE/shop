@@ -300,6 +300,7 @@
   <script>
     (function () {
       var PAYPAL_BUSINESS = 'hotspotfacem3ure@gmail.com';
+      var SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzwgF-f9giP7A_n49SLZUnkywYxbEwse_zUH3OIgAWMCyV6GnpgLhXJ5uZtaw-2nlG6qg/exec';
       var CART_KEY = 'hotspotface_cart';
       var DETAILS_KEY = 'hotspotface_details';
       var fieldIds = ['cust-fname', 'cust-lname', 'cust-address', 'cust-postcode', 'cust-phone'];
@@ -340,6 +341,19 @@
           });
           localStorage.setItem(DETAILS_KEY, JSON.stringify(details));
         } catch (e) { /* storage unavailable, details just won't persist */ }
+      }
+
+      function sendOrderToSheet(orderData) {
+        if (!SHEET_WEBHOOK_URL || SHEET_WEBHOOK_URL.indexOf('PASTE_YOUR') === 0) return;
+        try {
+          fetch(SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(orderData),
+            keepalive: true
+          });
+        } catch (e) { /* don't block checkout if this fails */ }
       }
 
       window.addToCart = function (name, price, btnEl) {
@@ -461,6 +475,21 @@
         var address = document.getElementById('cust-address').value.trim();
         var postcode = document.getElementById('cust-postcode').value.trim();
         var phone = document.getElementById('cust-phone').value.trim();
+
+        var itemsSummary = cart.map(function (line) {
+          return line.qty + 'x ' + line.name;
+        }).join('; ');
+        var subtotal = cart.reduce(function (sum, line) { return sum + line.price * line.qty; }, 0);
+
+        sendOrderToSheet({
+          firstName: fname,
+          lastName: lname,
+          address: address,
+          postcode: postcode,
+          phone: phone,
+          items: itemsSummary,
+          subtotal: subtotal.toFixed(2)
+        });
 
         var form = document.createElement('form');
         form.action = 'https://www.paypal.com/cgi-bin/webscr';
